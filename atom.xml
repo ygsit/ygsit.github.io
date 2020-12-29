@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hexo</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2020-12-29T14:41:15.878Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>John Doe</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git大全</title>
+    <link href="http://example.com/2020/12/29/git%E5%A4%A7%E5%85%A8/"/>
+    <id>http://example.com/2020/12/29/git%E5%A4%A7%E5%85%A8/</id>
+    <published>2020-12-29T14:33:54.000Z</published>
+    <updated>2020-12-29T14:41:15.878Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="GIT命令使用大全"><a href="#GIT命令使用大全" class="headerlink" title="GIT命令使用大全"></a>GIT命令使用大全</h1><p>查看配置：git config -l</p><p>查看系统配置：git config –system –-list</p><p>查看当前用户（global）配置：git config –global  –list</p><p>配置账号：</p><p> git config –global user.name “your name”<br> git config –global user.email “<a href="mailto:&#121;&#x6f;&#x75;&#x72;&#95;&#101;&#109;&#x61;&#x69;&#x6c;&#64;&#x79;&#111;&#x75;&#x72;&#x65;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;">&#121;&#x6f;&#x75;&#x72;&#95;&#101;&#109;&#x61;&#x69;&#x6c;&#64;&#x79;&#111;&#x75;&#x72;&#x65;&#109;&#97;&#x69;&#x6c;&#x2e;&#x63;&#x6f;&#109;</a>“</p><p>配置SSH：</p><p>1.如果没有SSH Key，则需要先生成一下：ssh-keygen -t rsa -C “注册github的邮箱”</p><p>2.执行之后继续执行以下命令来获取SSH Key：cd ~/.ssh</p><p>3.复制公钥在github中设置</p><p>4.验证：ssh -T <a href="mailto:&#x67;&#105;&#x74;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#98;&#x2e;&#99;&#x6f;&#109;">&#x67;&#105;&#x74;&#x40;&#103;&#105;&#x74;&#104;&#x75;&#98;&#x2e;&#99;&#x6f;&#109;</a>     //运行结果出现类似如下Hi ygsit! You’ve successfully authenticated, but GitHub does not provide shell access.</p><p><strong>提交代码：</strong></p><p>查看文件状态：git status</p><p>克隆：git clone url</p><p>git status                                 查看状态<br>git add .                               添加到暂存区<br>git commit -m “提交内容描述”                提交代码<br>git pull origin 分支名                      更新代码（当只有一个分支的时候可以直接git pull)<br>git push origin 分支名                   提交到远程（当只有一个分支的时候可以直接git push）</p><p>$ git reset [file]            还原暂存区的文件，并保存修改</p><p>$ git reset –hard        还原暂存区的文件，并把原来修改的删除</p><p>git commit –amend                                    修改提交的描述内容（vim修改）</p><p>git commit –amend -m “新提交信息”         直接修改提交描述内容</p><p>git reset –soft head^1      还原提交的文件，并保存修改</p><p>git reset –hard head^1     还原提交的文件，并把原来修改的删除</p><p><strong>git clone 和 git pull 区别：（clone拉取代码，pull更新代码）</strong></p><p>git clone：从远程服务器克隆一个一模一样的版本库到本地,复制的是整个版本库，叫做clone.（是将整个工程复制下来所以，不需要本地是仓库（没有.git文件夹））</p><p>git pull：从远程服务器获取到一个branch分支的更新到本地，并更新本地库，叫做pull.（本地有代码会更新，没有需要先初始化本地文件夹文一个仓库（git init））</p><p><strong>回退版本</strong>：</p><p>在一个分支中</p><p>git reset –soft head~1   回退并保存修改</p><p>git reset –hard head~1   回退不保存修改</p><p>1表示回退1个版本</p><p>2表示回退2个版本</p><p>回退到某个版本</p><p>git reset –soft 4e60fa983f23ff1ed5ec99f2c0cd4c4e4bf1e1d1（version code）</p><p>git reset –hard 4e60fa983f23ff1ed5ec99f2c0cd4c4e4bf1e1d1（version code）</p><p><strong>分支命令：</strong></p><p>查看所有本地分支：git branch </p><p>查看所有远程分支：git branch -r</p><p>查看所有本地分支和远程分支：git branch -a</p><p>创建分支：git branch 分支名  （复制当前分支到新创建的分支）</p><p>切换分支：git checkout 分支名</p><p>切换到上一个分支：git checkout -</p><p>创建并切换分支：git checkout -b 分支名 （相当于创建分支和切换分支的组合命令）</p><p>提交本地分支到远程仓库：git push origin 本地分支名</p><p>合并指定分支到当前分支：git merge 分支名</p><p>删除本地分支：git branch -d 本地分支名 （删除分支必须不在此分支下，删除本地分支后再切换到该删除的分支，会从远程拉取并自动创建本地分支）</p><p>删除远程分支：git push origin –delete 远程分支名</p><p><strong>冲突</strong>：</p><p>别人在更新代码 push冲突时  先pull一下</p><p>git pull 出现vi编辑时 按esc 跳到命令模式shift+ :wq!(保存强制退出) </p><p>如过merge成功 git界面无异常   否者需要解决冲突</p><p><strong>关联远程仓库</strong>：</p><p>git init</p><p>git add .</p><p>git commit -m “First commit”</p><p>git remote add origin 远程仓库路径(<a href="https://github.com/ygsit/test.git">https://github.com/ygsit/test.git</a>)</p><p>git push origin master或者git push -u origin master(加了-u，表示后面提交可以用git push代替git push origin master)</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;GIT命令使用大全&quot;&gt;&lt;a href=&quot;#GIT命令使用大全&quot; class=&quot;headerlink&quot; title=&quot;GIT命令使用大全&quot;&gt;&lt;/a&gt;GIT命令使用大全&lt;/h1&gt;&lt;p&gt;查看配置：git config -l&lt;/p&gt;
+&lt;p&gt;查看系统配置：git confi</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://example.com/2020/12/29/hello-world/"/>
+    <id>http://example.com/2020/12/29/hello-world/</id>
+    <published>2020-12-29T12:37:53.306Z</published>
+    <updated>2020-12-29T12:37:53.306Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
